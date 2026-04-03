@@ -1,0 +1,48 @@
+# TuncerYazıyor.com - Apache Config
+
+# PHP hata gösterimi (production'da kapatın)
+# php_flag display_errors off
+
+# Karakter seti
+AddDefaultCharset UTF-8
+
+# Güvenlik - hassas dosyalara erişimi engelle
+<FilesMatch "\.(env|json|py|md|gitignore)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# includes klasörüne erişimi engelle
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # HTTPS yönlendirme (GoDaddy'de aktif edin)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # www yönlendirme
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+    # includes klasörünü koru
+    RewriteRule ^includes/ - [F,L]
+    RewriteRule ^data/ - [F,L]
+
+    # install.php'yi koru (kurulumdan sonra silin)
+    # RewriteRule ^install\.php$ - [F,L]
+</IfModule>
+
+# Tarayıcı önbelleği
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Gzip sıkıştırma
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>

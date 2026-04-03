@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | TuncerYazıyor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .blog-detail {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        .blog-detail-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .blog-detail-category {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(233, 69, 96, 0.1);
+            color: var(--accent);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .blog-detail-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--primary);
+            margin-bottom: 16px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .blog-detail-meta {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            color: var(--text-lighter);
+            font-size: 0.9rem;
+        }
+        .blog-detail-meta i { margin-right: 6px; }
+        .blog-detail-body {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text);
+        }
+        .blog-detail-body p { margin-bottom: 20px; }
+        .blog-detail-body strong { color: var(--primary); }
+        .blog-back {
+            text-align: center;
+            margin-top: 48px;
+        }
+        .blog-all-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .blog-all-grid { grid-template-columns: 1fr; max-width: 500px; margin: 40px auto 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Tuncer</span><span class="logo-accent">Yazıyor</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#about">Hakkımda</a></li>
+                <li><a href="index.html#services">Hizmetler</a></li>
+                <li><a href="blog.html" style="color:var(--accent)">Blog</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+                <li><a href="index.html#appointment" class="nav-cta">Randevu Al</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Single Post View -->
+    <section class="blog-detail" id="blogDetail" style="display:none;">
+        <div class="container">
+            <div class="blog-detail-header">
+                <span class="blog-detail-category" id="postCategory"></span>
+                <h1 class="blog-detail-title" id="postTitle"></h1>
+                <div class="blog-detail-meta">
+                    <span><i class="fas fa-calendar"></i> <span id="postDate"></span></span>
+                    <span><i class="fas fa-clock"></i> <span id="postReadTime"></span></span>
+                    <span><i class="fas fa-user"></i> Tuncer</span>
+                </div>
+            </div>
+            <div class="blog-detail-body" id="postContent"></div>
+            <div class="blog-back">
+                <a href="blog.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Tüm Yazılar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Posts View -->
+    <section class="blog-detail" id="blogList" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Blog</span>
+                <h2 class="section-title">Tuncer Yazıyor</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Tüm yazılarım burada. Bilgi paylaştıkça çoğalır.</p>
+            </div>
+            <div class="blog-all-grid" id="allPosts"></div>
+        </div>
+    </section>
+
+    <footer class="footer" style="padding:30px 0;">
+        <div class="container">
+            <div class="footer-bottom" style="border:none;">
+                <p>&copy; 2026 TuncerYazıyor.com - Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger
+        document.getElementById('hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatDate(dateStr) {
+            return new Date(dateStr).toLocaleDateString('tr-TR', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+        }
+
+        function renderMarkdown(text) {
+            return text
+                .split('\n\n')
+                .map(p => '<p>' + p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</p>')
+                .join('');
+        }
+
+        // localStorage fallback - aynı veriler admin panelinden geliyor
+        const defaultPosts = [
+            { id:"1", title:"Başarıya Giden Yolda En Önemli 5 Adım", category:"Kişisel Gelişim", content:"Hedeflerinize ulaşmak için atmanız gereken temel adımları bu yazımda paylaşıyorum.\n\n1. **Net Hedefler Belirleyin** - Ne istediğinizi tam olarak bilin.\n2. **Plan Yapın** - Hedefe giden yolu küçük adımlara bölün.\n3. **Disiplinli Olun** - Her gün küçük de olsa bir adım atın.\n4. **Öğrenmeye Devam Edin** - Bilgi en büyük yatırımdır.\n5. **Pes Etmeyin** - Zorluklar geçicidir, kararlılık kalıcıdır.", summary:"Hedeflerinize ulaşmak için atmanız gereken temel adımları bu yazımda paylaşıyorum...", date:"2026-04-01", readTime:"5 dk", published:true, icon:"lightbulb" },
+            { id:"2", title:"Doğru Kararlar Almak İçin Stratejik Düşünme", category:"Strateji", content:"Kararsızlık anlarında size yol gösterecek stratejik düşünme teknikleri hakkında bilgiler.\n\nStratejik düşünme, sadece iş hayatında değil, hayatın her alanında kritik bir beceridir. Bu yazıda, daha iyi kararlar almanıza yardımcı olacak pratik yöntemlerden bahsedeceğim.", summary:"Kararsızlık anlarında size yol gösterecek stratejik düşünme teknikleri...", date:"2026-03-25", readTime:"7 dk", published:true, icon:"brain" },
+            { id:"3", title:"Etkili İletişimin Sırları", category:"İletişim", content:"İş ve özel hayatınızda fark yaratacak iletişim becerileri üzerine düşüncelerim.\n\nİletişim sadece konuşmak değildir. Dinlemek, anlamak ve doğru zamanda doğru şeyi söylemek de iletişimin önemli parçalarıdır.", summary:"İş ve özel hayatınızda fark yaratacak iletişim becerileri üzerine düşüncelerim...", date:"2026-03-18", readTime:"4 dk", published:true, icon:"handshake" }
+        ];
+
+        function getLocalPosts() {
+            const saved = localStorage.getItem('tunceryaziyor_blog');
+            if (saved) return JSON.parse(saved).filter(p => p.published);
+            return defaultPosts;
+        }
+
+        async function fetchPosts() {
+            try {
+                const res = await fetch('api/blog.php');
+                if (res.ok) return await res.json();
+            } catch (err) { /* fallback */ }
+            return getLocalPosts();
+        }
+
+        function showPost(post) {
+            document.getElementById('postCategory').textContent = post.category;
+            document.getElementById('postTitle').textContent = post.title;
+            document.getElementById('postDate').textContent = formatDate(post.date);
+            document.getElementById('postReadTime').textContent = post.readTime || '5 dk';
+            document.getElementById('postContent').innerHTML = renderMarkdown(post.content);
+            document.title = post.title + ' | TuncerYazıyor';
+            document.getElementById('blogDetail').style.display = 'block';
+        }
+
+        function showAllPosts(posts) {
+            document.getElementById('blogList').style.display = 'block';
+            if (posts.length === 0) {
+                document.getElementById('allPosts').innerHTML = '<p style="text-align:center;color:#999;">Henüz yazı yok.</p>';
+                return;
+            }
+            document.getElementById('allPosts').innerHTML = posts.map(post => `
+                <article class="blog-card">
+                    <div class="blog-img">
+                        <div class="blog-img-placeholder">
+                            <i class="fas fa-${escapeHtml(post.icon || 'pen')}"></i>
+                        </div>
+                        <span class="blog-category">${escapeHtml(post.category)}</span>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> ${formatDate(post.date)}</span>
+                            <span><i class="fas fa-clock"></i> ${escapeHtml(post.readTime || '5 dk')}</span>
+                        </div>
+                        <h3>${escapeHtml(post.title)}</h3>
+                        <p>${escapeHtml(post.summary)}</p>
+                        <a href="blog.html?id=${post.id}" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        async function init() {
+            const posts = await fetchPosts();
+
+            if (postId) {
+                const post = posts.find(p => p.id === postId);
+                if (post) {
+                    showPost(post);
+                } else {
+                    showAllPosts(posts);
+                }
+            } else {
+                showAllPosts(posts);
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
