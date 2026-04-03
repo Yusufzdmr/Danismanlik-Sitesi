@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start \"\" \"/c/Users/yusuf/Desktop/danışmanlık/index.html\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
+      "Bash(npm --version)",
+      "Bash(start \"\" \"/c/Users/yusuf/Desktop/danışmanlık/admin.html\")",
+      "Read(//c/Users/yusuf/Desktop/**)",
+      "Bash(python -c ':*)",
+      "Bash(start \"\" \"/c/Users/yusuf/Desktop/danışmanlık/prototip/index.html\")",
+      "Bash(mkdir:*)"
+    ]
+  }
+}
