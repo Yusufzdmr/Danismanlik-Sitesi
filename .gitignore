@@ -1,0 +1,27 @@
+# Hassas konfigürasyon - asla repo'ya gitmesin
+includes/config.php
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editör
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log ve geçici dosyalar
+*.log
+*.bak
+*.tmp
+*.cache
+
+# PHP
+vendor/
+composer.lock
+
+# Bağımlılıklar
+node_modules/

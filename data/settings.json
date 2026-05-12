@@ -1,0 +1,296 @@
+{
+    "profile": {
+        "name": "Tuncer KELEŞ | TK Danışmanlık",
+        "title": "Kariyer Danışmanı | CV, Mülakat ve LinkedIn Uzmanı",
+        "email": "info@tkdanismanlik.com",
+        "phone": "+90 (532) 603 49 93",
+        "address": "İstanbul, Türkiye"
+    },
+    "social": {
+        "instagram": "https:\/\/www.instagram.com\/tk.kariyer?igsh=dmo5M3U1eWM3bjA2&utm_source=qr",
+        "twitter": "",
+        "linkedin": "https:\/\/www.linkedin.com\/in\/tuncer-keles\/",
+        "youtube": "",
+        "whatsapp": ""
+    },
+    "hero": {
+        "badge": "Kariyer Danışmanlığı ve Profesyonel Rehberlik",
+        "name": "Tuncer Hoca",
+        "subtitle": "İş arama sürecinizi netleştiriyor, CV’nizi güçlendiriyor ve mülakatlarda fark yaratmanızı sağlıyorum. Doğru strateji ile hedefinize daha hızlı ulaşın.",
+        "stats": [
+            {
+                "target": 1000,
+                "suffix": "+",
+                "label": "Mutlu Danışan"
+            },
+            {
+                "target": 27,
+                "suffix": "+",
+                "label": "Yıl Deneyim"
+            },
+            {
+                "target": 50000,
+                "suffix": "+",
+                "label": "Takipçi"
+            }
+        ]
+    },
+    "about": {
+        "image": "img\/uploads\/69d76a8e82f85_whatsappimage2026-02-27at19.07.09.jpeg.jpeg",
+        "heading": "Görünmezlikten Görünürlüğe Giden Yol",
+        "paragraphs": [
+            "İnsan kaynakları alanında edindiğim saha deneyimini bugün bireylerin kariyer yolculuklarına yön vermek için kullanıyorum.\n\nYıllar boyunca işe alım süreçlerinin içinde yer aldım.\nAdayların nerede elendiğini, neyin fark yarattığını birebir gördüm.\nBu sayede iş arayanların yaşadığı belirsizliği ve görünmez kalma hissini yakından tanıyorum.\n\nBugün amacım net\nPotansiyelini doğru ifade edemeyen profesyonelleri görünür hale getirmek\n\nCV yazımı, mülakat hazırlığı, LinkedIn optimizasyonu ve kariyer planlama süreçlerinde yalnızca teknik destek vermem\nAynı zamanda sürdürülebilir bir kariyer stratejisi oluştururum\n\nÇalışma tarzım açık\nNet konuşurum\nEksikleri doğrudan söylerim\nAma sürecin hiçbir anında yalnız bırakmam\n\nBenimle çalışanlar bir danışmanla değil\nSüreci bilen bir yol arkadaşıyla ilerlediklerini bilir",
+            "Her danışanımın hikayesi benzersizdir. Ben de her birine özel, kişiye özel çözümler sunarak gerçek değer yaratmayı hedefliyorum."
+        ],
+        "features": [
+            "Birebir Danışmanlık",
+            "CV Hazırlama",
+            "Mülakat Teknikleri",
+            "Online & Yüz yüze",
+            "Gizlilik & Güven",
+            "Sonuç Odaklı Yaklaşım"
+        ]
+    },
+    "services": [
+        {
+            "id": "bireysel",
+            "name": "CV Yazım ücreti ",
+            "description": "Seni doğru anlatan bir CV hazırlarız\n\nGereksiz detay yok\nUzun uzun görev tanımları yok\nSonuç odaklı, net ve etkili",
+            "price": 2750,
+            "priceLabel": "2750 Kdv Dahil",
+            "icon": "fa-comments",
+            "featured": true,
+            "linkType": "appointment",
+            "image": ""
+        },
+        {
+            "id": "kurumsal",
+            "name": "Kurumsal Danışmanlık",
+            "description": "Şirketlerin insan kaynakları süreçlerini daha verimli, sürdürülebilir ve ölçülebilir hale getirmek için kurumsal danışmanlık hizmeti sunuyorum. İşe alım süreçleri, aday deneyimi, mülakat teknikleri ve çalışan bağlılığı gibi kritik alanlarda mevcut yapıyı analiz eder, gelişim alanlarını net şekilde belirlerim.\nKurumunuza özel çözümlerle daha doğru adaylara ulaşmanızı, süreçlerinizi güçlendirmenizi ve insan kaynağınızı daha etkin yönetmenizi sağlarım.",
+            "price": 0,
+            "priceLabel": "İletişime Geçiniz",
+            "icon": "fa-briefcase",
+            "featured": true,
+            "linkType": "appointment",
+            "image": ""
+        },
+        {
+            "id": "online",
+            "name": "Online Görüşme",
+            "description": "Dünyanın her yerinden online görüşmelerle kariyer sürecinizi birlikte yönetiyoruz. CV analizi, başvuru stratejisi ve mülakat hazırlığı gibi kritik konularda net yönlendirme alır, süreci daha bilinçli ve güçlü şekilde ilerletirsiniz.",
+            "price": 2500,
+            "priceLabel": "2500 Kdv Dahil",
+            "icon": "fa-video",
+            "featured": true,
+            "linkType": "appointment",
+            "image": ""
+        },
+        {
+            "id": "svc_1777040708680",
+            "name": "30 GÜNLÜK DANIŞMANLIK",
+            "description": "CV ve LinkedIn profilini birlikte düzenleriz\nBaşvuru stratejini netleştiririz\nİlanları doğru okumayı öğrenirsin\nMülakat sürecine birlikte hazırlanırız\n\nBurada önemli bir nokta var\nTüm süreci ben yapmam\n\nBen yön veririm\nSen uygularsın\n\nBu sayede gerçekten öğrenir ve dönüşüm sağlarsın",
+            "price": 8000,
+            "priceLabel": "8000 Kdv Dahil",
+            "icon": "fa-star",
+            "featured": true,
+            "linkType": "contact",
+            "image": ""
+        }
+    ],
+    "testimonials": [
+        {
+            "id": "r1775723217830",
+            "name": "Yusuf Özdemir",
+            "role": "Bireysel Danışan",
+            "text": "Gerçekten mükemmel bir danışman ve insan kendisi",
+            "stars": 5
+        }
+    ],
+    "numbers": [
+        {
+            "icon": "fa-users",
+            "target": 1000,
+            "suffix": "+",
+            "label": "Aktif Danışan"
+        },
+        {
+            "icon": "fa-eye",
+            "target": 70,
+            "suffix": "M+",
+            "label": "Toplam Gösterim"
+        },
+        {
+            "icon": "fa-heart",
+            "target": 50,
+            "suffix": "K+",
+            "label": "Takipçi"
+        },
+        {
+            "icon": "fa-star",
+            "target": 99,
+            "suffix": "%",
+            "label": "Memnuniyet Oranı"
+        }
+    ],
+    "contact": {
+        "phone": "+90 (532) 603 49 93",
+        "email": "info@tkdanismanlik.com",
+        "address": "İstanbul, Türkiye",
+        "workingHours": "Pzt - Cuma: 18:00 - 23:00"
+    },
+    "appointment": {
+        "title": "Online Randevu Oluşturun",
+        "description": "Aşağıdaki formu doldurarak kolayca randevu alabilirsiniz.",
+        "sideTitle": "Neden Randevu Almalısınız?",
+        "benefits": [
+            "Kişiye özel danışmanlık planı",
+            "Esnek saat seçenekleri",
+            "Online veya yüz yüze görüşme",
+            "Güvenli ödeme sistemi",
+            "Memnuniyet garantisi"
+        ],
+        "timeSlots": [
+            "18:00",
+            "19:00",
+            "20:00",
+            "21:00"
+        ]
+    },
+    "seo": {
+        "title": "TK Danışmanlık | Kariyer Danışmanlığı, CV Hazırlama ve Mülakat Koçluğu",
+        "description": "TK Danışmanlık ile kariyerinizde fark yaratın. CV hazırlama, LinkedIn optimizasyonu, mülakat koçluğu ve kariyer danışmanlığı hizmetleriyle iş bulma sürecinizi hızlandırın",
+        "keywords": "danışmanlık, tk danışmanlık, profesyonel danışmanlık, online randevu, uzman danışman kariyer danışmanlığı, cv hazırlama, cv danışmanlığı, mülakat koçluğu, linkedin danışmanlığı, iş bulma stratejileri, insan kaynakları danışmanlığı, online kariyer danışmanlığı, profesyonel cv yazımı, tk danışmanlık",
+        "analyticsId": ""
+    },
+    "footer": {
+        "description": "Gerçek deneyim, net yönlendirme ve sonuç odaklı danışmanlık. Kariyer yolculuğunuzda yalnız değilsiniz.",
+        "newsletter": "Kariyerinizi ileri taşıyacak içerikler, ipuçları ve fırsatlar için e-posta bültenime abone olun.",
+        "copyright": "2026 TKDanismanlik.com | Tüm hakları saklıdır."
+    },
+    "logo": "img\/uploads\/logo.jpeg",
+    "references": [
+        {
+            "logo": "img\/uploads\/69d9038f6ee8e_a6acfef2dl7ulhqvllniux_smxahn5a6vugmuhp5ne9esib2zz5nttt1_ijrielgegc_yskmmoubckhppr0nwt.jpg",
+            "name": "N26",
+            "id": "ref1775829903512"
+        },
+        {
+            "logo": "img\/uploads\/69d9039b95feb_jt_f6yohavwp8affyipgtuotxuow21vrfyhfkxxtoh23jozzud2vz6su7acmzw4yzge7nkk5ouu7coh8wgpooe.jpg",
+            "name": "KUKA",
+            "id": "ref1775829915651"
+        },
+        {
+            "logo": "img\/uploads\/69d903a77213f_phaa35r9k53_vx8xh2iebrx7iku08-sxl1zgtemd6evdxl78dbcnaakg4jflp2tbite9qckyo-haefnlesjmlq.jpg",
+            "name": "FESTO",
+            "id": "ref1775829927511"
+        },
+        {
+            "logo": "img\/uploads\/69d903b632efe_hlj-f8x2uimfdotjvjm6n3xh_khlm_wun5g0jmukln6zloagiwwj9a_ubzezcbhvir6xqlir4axh5dkjrxukt5.jpg",
+            "name": "TYHS",
+            "id": "ref1775829942252"
+        },
+        {
+            "logo": "img\/uploads\/69d903c23aae5_wez7ht8lfck494kls3unkxks-uopxhhsckll4hlnxjm6o_uvpajdys1jzpxwnqnl7rdf8prupxkrvvpknq9f2d.jpg",
+            "name": "ZENS",
+            "id": "ref1775829954281"
+        },
+        {
+            "logo": "img\/uploads\/69d90d19b880b_logo-kalibrio-adm-2.png.png",
+            "name": "kalibro",
+            "id": "ref1775832345794"
+        }
+    ],
+    "gallery": [
+        {
+            "url": "img\/uploads\/69d7711896b25_whatsappimage2026-03-13at16.14.36.jpeg.jpeg",
+            "type": "image",
+            "title": "Okan Üniversitesi Seminer",
+            "date": "Mart 2026",
+            "id": "g1775726872652"
+        },
+        {
+            "url": "img\/uploads\/69d77130442ba_whatsappimage2026-03-13at16.14.52.jpeg.jpeg",
+            "type": "image",
+            "title": "Okan Üniversitesi Seminer",
+            "date": "Mart 2026",
+            "id": "g1775726896314"
+        },
+        {
+            "url": "img\/uploads\/69d77145d43b8_whatsappimage2026-03-13at16.16.15.jpeg.jpeg",
+            "type": "image",
+            "title": "Okan Üniversitesi Seminer",
+            "date": "Mart 2026",
+            "id": "g1775726917907"
+        },
+        {
+            "url": "img\/uploads\/69d7715f49a2c_whatsappimage2026-03-13at16.16.31.jpeg.jpeg",
+            "type": "image",
+            "title": "Okan Üniversitesi Seminer",
+            "date": "Mart 2026",
+            "id": "g1775726943339"
+        },
+        {
+            "url": "img\/uploads\/69d77178cf0bf_whatsappimage2026-03-21at11.47.57.jpeg.jpeg",
+            "type": "image",
+            "title": "Beykent Üniversitesi",
+            "date": "",
+            "id": "g1775726968886"
+        },
+        {
+            "url": "img\/uploads\/69d7718d668a0_whatsappvideo2026-03-25at18.10.43.mp4.mp4",
+            "type": "video",
+            "title": "Mutlu Müşteri",
+            "date": "",
+            "id": "g1775726989464"
+        },
+        {
+            "url": "img\/uploads\/69d7719841d50_whatsappvideo2026-03-25at18.24.37.mp4.mp4",
+            "type": "video",
+            "title": "Mutlu Danışan",
+            "date": "",
+            "id": "g1775727000320"
+        },
+        {
+            "url": "img\/uploads\/69db54cfe4090_eoko.jpg.jpg",
+            "type": "image",
+            "title": "Marmara Üniversitesi 2026",
+            "date": "",
+            "id": "g1775981776882"
+        },
+        {
+            "url": "img\/uploads\/69df74c8ae673_kentradyoyayn2.png.png",
+            "type": "image",
+            "title": "kent radyo yayın 2026",
+            "date": "",
+            "id": "g1776252104746"
+        },
+        {
+            "url": "img\/uploads\/69df74d5043c6_eitim.png.png",
+            "type": "image",
+            "title": "",
+            "date": "",
+            "id": "g1776252117052"
+        },
+        {
+            "url": "img\/uploads\/69e8a1af250c8_tkdanmanlkkariyerdanmanlkhizmetleri1.png.png",
+            "type": "image",
+            "title": "",
+            "date": "",
+            "id": "g1776853423182"
+        },
+        {
+            "url": "img\/uploads\/69ea28aff22c7_chatgptimage23nis202617_02_19.png.png",
+            "type": "image",
+            "title": "",
+            "date": "",
+            "id": "g1776953519929"
+        },
+        {
+            "url": "img\/uploads\/69eb15399f388_chatgptimage24nis202609_51_56.png.png",
+            "type": "image",
+            "title": "Güncel doğum izin ve diğer haklar",
+            "date": "",
+            "id": "g1777014073691"
+        }
+    ]
+}

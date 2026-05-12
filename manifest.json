@@ -1,0 +1,52 @@
+{
+  "name": "TK Danışmanlık",
+  "short_name": "TK Danışmanlık",
+  "description": "Profesyonel kariyer ve danışmanlık hizmetleri — online randevu, ödeme ve blog.",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "lang": "tr-TR",
+  "dir": "ltr",
+  "categories": ["business", "lifestyle", "education"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/uploads/logo.jpeg",
+      "sizes": "1056x855",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Randevu Al",
+      "short_name": "Randevu",
+      "url": "/#appointment",
+      "description": "Hızlı randevu oluşturun"
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog.html"
+    },
+    {
+      "name": "İletişim",
+      "short_name": "İletişim",
+      "url": "/#contact"
+    }
+  ]
+}

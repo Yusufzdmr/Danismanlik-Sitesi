@@ -1,0 +1,28 @@
+{
+  "name": "TK Danışmanlık - Admin",
+  "short_name": "TK Admin",
+  "description": "TK Danışmanlık yönetim paneli — randevular, mesajlar, blog ve site ayarları.",
+  "start_url": "/admin.html?utm_source=pwa",
+  "scope": "/admin.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f0f23",
+  "theme_color": "#0f172a",
+  "lang": "tr-TR",
+  "dir": "ltr",
+  "categories": ["productivity", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon-admin.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

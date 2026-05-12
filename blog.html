@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TK Danışmanlık Blog - Kişisel gelişim, strateji, liderlik ve iletişim üzerine yazılar.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.tkdanismanlik.com/blog.html">
+    <title>Blog | TK Danışmanlık</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <style>
+        .blog-page { padding: 120px 0 80px; min-height: 100vh; }
+        .blog-all-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .blog-all-grid { grid-template-columns: 1fr; max-width: 500px; margin: 40px auto 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/uploads/logo.jpeg" alt="TK Logo" class="logo-img">
+                <span class="logo-text">TK</span><span class="logo-accent">Danışmanlık</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#about">Hakkımda</a></li>
+                <li><a href="index.html#services">Hizmetler</a></li>
+                <li><a href="blog.html" style="color:var(--accent)">Blog</a></li>
+                <li><a href="index.html#makaleler">Makaleler</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+                <li><a href="index.html#appointment" class="nav-cta">Randevu Al</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- All Posts -->
+    <section class="blog-page" id="blogList">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Blog</span>
+                <h2 class="section-title">TK Danışmanlık</h2>
+                <div class="section-line"></div>
+                <p class="section-desc">Tüm yazılarım burada. Bilgi paylaştıkça çoğalır.</p>
+            </div>
+            <div class="blog-all-grid" id="allPosts">
+                <p style="text-align:center;color:#999;grid-column:1/-1;">Yükleniyor...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Modal -->
+    <div class="blog-modal-overlay" id="blogModal">
+        <div class="blog-modal">
+            <button class="blog-modal-close" id="blogModalClose"><i class="fas fa-times"></i></button>
+            <div class="blog-modal-body">
+                <span class="blog-category" id="blogModalCategory"></span>
+                <h2 id="blogModalTitle"></h2>
+                <div class="blog-meta" style="margin:12px 0 24px;">
+                    <span><i class="fas fa-calendar"></i> <span id="blogModalDate"></span></span>
+                    <span><i class="fas fa-clock"></i> <span id="blogModalReadTime"></span></span>
+                </div>
+                <div class="blog-modal-content" id="blogModalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="padding:30px 0;">
+        <div class="container">
+            <div class="footer-bottom" style="border:none;">
+                <p>&copy; 2026 TK Danışmanlık.com - Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger
+        document.getElementById('hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+        let _allPosts = [];
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            return new Date(dateStr).toLocaleDateString('tr-TR', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+        }
+
+        function renderMarkdown(text) {
+            if (!text) return '';
+            return text
+                .split('\n\n')
+                .map(p => '<p>' + p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</p>')
+                .join('');
+        }
+
+        // ===== MODAL =====
+        function openModal(post) {
+            document.getElementById('blogModalCategory').textContent = post.category || '';
+            document.getElementById('blogModalTitle').textContent = post.title || '';
+            document.getElementById('blogModalDate').textContent = formatDate(post.date || post.created_at || '');
+            document.getElementById('blogModalReadTime').textContent = post.readTime || post.read_time || '5 dk';
+            document.getElementById('blogModalContent').innerHTML = renderMarkdown(post.content || post.summary || '');
+            document.getElementById('blogModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('blogModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('blogModalClose').addEventListener('click', closeModal);
+        document.getElementById('blogModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+        // ===== POSTS =====
+        function showAllPosts(posts) {
+            _allPosts = posts;
+            const container = document.getElementById('allPosts');
+            if (posts.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1;">Henüz yazı yok.</p>';
+                return;
+            }
+            container.innerHTML = posts.map(function(post, i) {
+                return '<article class="blog-card" data-idx="' + i + '" style="cursor:pointer;">' +
+                    '<div class="blog-img"><div class="blog-img-placeholder"><i class="fas fa-' + escapeHtml(post.icon || 'pen') + '"></i></div>' +
+                    '<span class="blog-category">' + escapeHtml(post.category) + '</span></div>' +
+                    '<div class="blog-content"><div class="blog-meta">' +
+                    '<span><i class="fas fa-calendar"></i> ' + formatDate(post.date || post.created_at) + '</span>' +
+                    '<span><i class="fas fa-clock"></i> ' + escapeHtml(post.readTime || post.read_time || '5 dk') + '</span></div>' +
+                    '<h3>' + escapeHtml(post.title) + '</h3>' +
+                    '<p>' + escapeHtml(post.summary) + '</p>' +
+                    '<span class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></span>' +
+                    '</div></article>';
+            }).join('');
+
+            container.querySelectorAll('.blog-card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    openModal(_allPosts[parseInt(card.dataset.idx)]);
+                });
+            });
+        }
+
+        // ===== INIT =====
+        async function init() {
+            var posts = [];
+            try {
+                var res = await fetch('api/blog.php');
+                if (res.ok) posts = await res.json();
+            } catch (err) {}
+
+            showAllPosts(posts);
+
+            if (postId) {
+                var post = posts.find(function(p) { return String(p.id) === String(postId); });
+                if (post) openModal(post);
+            }
+        }
+
+        init();
+    </script>
+    <script>
+    (function(){
+        var sid = sessionStorage.getItem('_vsid');
+        if (!sid) { sid = Math.random().toString(36).substr(2) + Date.now().toString(36); sessionStorage.setItem('_vsid', sid); }
+        fetch('/api/visitors.php?action=track', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ page: location.pathname, referrer: document.referrer, session_id: sid })
+        }).catch(function(){});
+    })();
+    </script>
+</body>
+</html>

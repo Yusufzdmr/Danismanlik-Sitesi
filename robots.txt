@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /includes/
+Disallow: /data/
+Disallow: /install.php
+
+Sitemap: https://www.tkdanismanlik.com/sitemap.xml

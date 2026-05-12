@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TK Danışmanlık - Ücretli makale">
+    <meta name="robots" content="noindex">
+    <title>Makale | TK Danışmanlık</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=4">
+    <style>
+        .article-page { padding: 120px 0 80px; min-height: 100vh; background: #f8fafc; }
+        .article-wrap { max-width: 820px; margin: 0 auto; }
+        .article-hero {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+            margin-bottom: 28px;
+        }
+        .article-hero .cover {
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #f0a500;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+        }
+        .article-hero .cover img { width: 100%; height: 100%; object-fit: cover; }
+        .article-hero .info { padding: 32px; }
+        .article-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+            line-height: 1.25;
+        }
+        .article-hero .meta {
+            display: flex; gap: 18px; color: #64748b; font-size: .9rem; margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .article-hero .summary { color: #475569; font-size: 1.05rem; line-height: 1.7; }
+        .article-hero .price {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, #f0a500, #d4940a);
+            color: #fff; padding: 10px 18px; border-radius: 24px;
+            font-weight: 700; font-size: 1rem;
+            margin-top: 18px;
+        }
+
+        .paywall {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+        }
+        .paywall h2 {
+            font-size: 1.4rem; color: #1a1a2e; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .paywall h2 i { color: #f0a500; }
+        .paywall p.sub { color: #64748b; margin-bottom: 24px; font-size: .95rem; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: .9rem; color: #334155; margin-bottom: 6px; font-weight: 500; }
+        .form-group input {
+            width: 100%; padding: 12px 14px;
+            border: 2px solid #e2e8f0; border-radius: 8px;
+            font-size: .95rem; font-family: 'Inter', sans-serif;
+            transition: border-color .2s;
+        }
+        .form-group input:focus { outline: none; border-color: #f0a500; }
+
+        .btn-buy {
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff; padding: 14px;
+            border: none; border-radius: 10px;
+            font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: transform .15s, box-shadow .2s;
+            margin-top: 8px;
+        }
+        .btn-buy:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.15); }
+        .btn-buy:disabled { opacity: .6; cursor: not-allowed; }
+
+        .error-box {
+            background: #fff7ed; color: #9a3412;
+            border-radius: 10px; padding: 14px;
+            font-size: .9rem; margin-top: 14px;
+            display: none;
+        }
+
+        .article-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+            line-height: 1.85;
+            font-size: 1.05rem;
+            color: #1e293b;
+        }
+        .article-content p { margin-bottom: 1.2em; }
+        .article-content strong { color: #1a1a2e; }
+        .download-bar {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: #fff;
+            border-radius: 14px;
+            padding: 20px 28px;
+            margin-bottom: 24px;
+            display: flex; align-items: center; gap: 18px; justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .download-bar .msg { display: flex; align-items: center; gap: 14px; }
+        .download-bar .msg i { font-size: 1.6rem; }
+        .download-bar a {
+            background: #fff; color: #15803d;
+            padding: 10px 20px; border-radius: 8px;
+            font-weight: 600; text-decoration: none;
+            transition: background .2s;
+        }
+        .download-bar a:hover { background: #f0a500; color: #fff; }
+
+        #iyzipay-checkout-form { margin-top: 18px; }
+
+        .not-found {
+            text-align: center; padding: 60px 20px;
+            background: #fff; border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+        }
+        .not-found i { font-size: 3rem; color: #cbd5e1; margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/uploads/logo.jpeg" alt="TK Logo" class="logo-img">
+                <span class="logo-text">TK</span><span class="logo-accent">Danışmanlık</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#about">Hakkımda</a></li>
+                <li><a href="index.html#services">Hizmetler</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#makaleler" style="color:var(--accent)">Makaleler</a></li>
+                <li><a href="index.html#testimonials">Yorumlar</a></li>
+                <li><a href="index.html#gallery">Galeri</a></li>
+                <li><a href="index.html#references">Referanslar</a></li>
+                <li><a href="index.html#contact">İletişim</a></li>
+                <li><a href="index.html#appointment" class="nav-cta">Randevu Al</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="article-page">
+        <div class="container">
+            <div class="article-wrap" id="articleWrap">
+                <p style="text-align:center;color:#999;">Yükleniyor...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="padding:30px 0;">
+        <div class="container">
+            <div class="footer-bottom" style="border:none;">
+                <p>&copy; 2026 TK Danışmanlık.com - Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
+        }
+
+        function renderMarkdown(text) {
+            if (!text) return '';
+            return text
+                .split('\n\n')
+                .map(p => '<p>' + escapeHtml(p).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</p>')
+                .join('');
+        }
+
+        function formatPrice(n) {
+            return Number(n || 0).toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const articleId = params.get('id');
+        const accessToken = params.get('token') || '';
+
+        function buildHero(article) {
+            const cover = article.cover_image
+                ? '<img src="' + escapeHtml(article.cover_image) + '" alt="">'
+                : '<i class="fas fa-file-alt"></i>';
+            return '<div class="article-hero">' +
+                '<div class="cover">' + cover + '</div>' +
+                '<div class="info">' +
+                    '<h1>' + escapeHtml(article.title) + '</h1>' +
+                    '<div class="meta">' +
+                        '<span><i class="far fa-clock"></i> ' + escapeHtml(article.read_time || '5 dk') + '</span>' +
+                    '</div>' +
+                    '<div class="summary">' + escapeHtml(article.summary || '') + '</div>' +
+                    (article.unlocked ? '' : '<div class="price"><i class="fas fa-lock"></i> ' + formatPrice(article.price) + ' ₺</div>') +
+                '</div>' +
+            '</div>';
+        }
+
+        function buildPaywall(article) {
+            return '<div class="paywall" id="paywall">' +
+                '<h2><i class="fas fa-lock"></i> Makaleyi Aç</h2>' +
+                '<p class="sub">Bilgilerinizi giriniz, ödeme sonrası makale hem bu sayfada açılır hem de PDF olarak e-postanıza link gelir.</p>' +
+                '<form id="buyForm">' +
+                    '<div class="form-group">' +
+                        '<label>Ad Soyad *</label>' +
+                        '<input type="text" name="fullName" required>' +
+                    '</div>' +
+                    '<div class="form-row">' +
+                        '<div class="form-group">' +
+                            '<label>E-posta *</label>' +
+                            '<input type="email" name="email" required>' +
+                        '</div>' +
+                        '<div class="form-group">' +
+                            '<label>Telefon</label>' +
+                            '<input type="tel" name="phone" placeholder="05XX XXX XX XX">' +
+                        '</div>' +
+                    '</div>' +
+                    '<button type="submit" class="btn-buy" id="buyBtn">' +
+                        '<i class="fas fa-shield-alt"></i> ' + formatPrice(article.price) + ' ₺ Öde ve Aç' +
+                    '</button>' +
+                    '<div class="error-box" id="buyError"></div>' +
+                '</form>' +
+                '<div id="paymentMount"></div>' +
+            '</div>';
+        }
+
+        function buildUnlocked(article) {
+            let bar = '';
+            if (article.has_pdf) {
+                bar = '<div class="download-bar">' +
+                    '<div class="msg"><i class="fas fa-check-circle"></i> Ödeme başarılı. Makaleye süresiz erişiminiz var.</div>' +
+                    '<a href="' + article.download_url + '"><i class="fas fa-download"></i> PDF İndir</a>' +
+                '</div>';
+            } else {
+                bar = '<div class="download-bar">' +
+                    '<div class="msg"><i class="fas fa-check-circle"></i> Ödeme başarılı. Makaleye süresiz erişiminiz var.</div>' +
+                '</div>';
+            }
+            return bar +
+                '<div class="article-content">' + renderMarkdown(article.content || '') + '</div>';
+        }
+
+        async function loadArticle() {
+            if (!articleId) {
+                document.getElementById('articleWrap').innerHTML =
+                    '<div class="not-found"><i class="fas fa-question-circle"></i><h3>Makale seçilmedi</h3><p><a href="makaleler.html">Tüm makaleler</a></p></div>';
+                return;
+            }
+
+            let url = 'api/articles.php?id=' + encodeURIComponent(articleId);
+            if (accessToken) url += '&token=' + encodeURIComponent(accessToken);
+
+            let article = null;
+            try {
+                const res = await fetch(url);
+                if (res.ok) article = await res.json();
+            } catch (err) {}
+
+            if (!article || article.error) {
+                document.getElementById('articleWrap').innerHTML =
+                    '<div class="not-found"><i class="fas fa-exclamation-circle"></i><h3>Makale bulunamadı</h3><p><a href="makaleler.html">Tüm makaleler</a></p></div>';
+                return;
+            }
+
+            const html = buildHero(article) +
+                (article.unlocked ? buildUnlocked(article) : buildPaywall(article));
+            document.getElementById('articleWrap').innerHTML = html;
+
+            if (!article.unlocked) attachBuyForm(article);
+        }
+
+        function attachBuyForm(article) {
+            const form = document.getElementById('buyForm');
+            const btn = document.getElementById('buyBtn');
+            const errBox = document.getElementById('buyError');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                errBox.style.display = 'none';
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> İşleniyor...';
+
+                const fd = new FormData(form);
+                const payload = {
+                    articleId: article.id,
+                    fullName: fd.get('fullName').trim(),
+                    email: fd.get('email').trim(),
+                    phone: (fd.get('phone') || '').trim()
+                };
+
+                try {
+                    const res = await fetch('api/articles.php?action=purchase', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await res.json().catch(() => ({}));
+
+                    if (res.ok && result.checkoutFormContent) {
+                        const mountWrap = document.getElementById('paymentMount');
+                        mountWrap.innerHTML = '<div id="iyzipay-checkout-form" class="responsive"></div>';
+                        const mount = document.getElementById('iyzipay-checkout-form');
+                        mount.innerHTML = result.checkoutFormContent;
+
+                        mount.querySelectorAll('script').forEach(oldScript => {
+                            const s = document.createElement('script');
+                            for (const a of oldScript.attributes) s.setAttribute(a.name, a.value);
+                            s.text = oldScript.textContent;
+                            oldScript.parentNode.replaceChild(s, oldScript);
+                        });
+
+                        form.style.display = 'none';
+                        mountWrap.scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+
+                    errBox.textContent = result.errorMessage || result.error || 'Ödeme başlatılamadı';
+                    errBox.style.display = 'block';
+                } catch (err) {
+                    errBox.textContent = 'Sunucuya ulaşılamadı';
+                    errBox.style.display = 'block';
+                }
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-shield-alt"></i> ' + formatPrice(article.price) + ' ₺ Öde ve Aç';
+            });
+        }
+
+        loadArticle();
+    </script>
+    <script>
+    (function(){
+        var sid = sessionStorage.getItem('_vsid');
+        if (!sid) { sid = Math.random().toString(36).substr(2) + Date.now().toString(36); sessionStorage.setItem('_vsid', sid); }
+        fetch('/api/visitors.php?action=track', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ page: location.pathname, referrer: document.referrer, session_id: sid })
+        }).catch(function(){});
+    })();
+    </script>
+</body>
+</html>
