@@ -20,6 +20,16 @@ yönetim panelli profesyonel danışmanlık web sitesi.
 
 Bireysel bir danışmanın hizmetlerini tanıttığı, içerik paylaştığı ve ziyaretçilerin **online randevu alıp ödeme yapabildiği** profesyonel bir web sitesidir. Koyu temalı, tek sayfa (one-page) tanıtım sitesi + blog + tam donanımlı yönetim paneli içerir.
 
+## 📸 Ekran Görüntüleri
+
+<div align="center">
+
+| Ana Sayfa | Karşılama | Açılış |
+|:--:|:--:|:--:|
+| <img src="docs/screenshots/anasayfa.png" width="280" alt="Ana sayfa" /> | <img src="docs/screenshots/karsilama.png" width="280" alt="Karşılama ekranı" /> | <img src="docs/screenshots/acilis.png" width="280" alt="Açılış animasyonu" /> |
+
+</div>
+
 ## ✨ Özellikler
 
 - 🏠 **Tek sayfa tanıtım** — hero, hakkımda, hizmetler (fiyatlı), yorumlar, iletişim
